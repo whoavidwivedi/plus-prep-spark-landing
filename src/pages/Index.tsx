@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from "react";
 import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -9,6 +10,7 @@ import Reviews from "@/components/Reviews";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { ArrowUp } from "lucide-react";
 
 function ThemeTransitionLayer() {
   const { themeTransition, theme } = useTheme();
@@ -51,6 +53,26 @@ function ThemeTransitionLayer() {
 
 const Index = () => {
   const { transitionActive } = useTheme();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Show/hide scroll to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <ThemeProvider defaultTheme="light" storageKey="takeuforward-theme">
       <ThemeTransitionLayer />
@@ -68,6 +90,17 @@ const Index = () => {
         <CTA />
         <Footer />
       </div>
+      
+      {/* Scroll to Top Button - visible across all sections */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-[9998] p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </button>
+      )}
     </ThemeProvider>
   );
 };
