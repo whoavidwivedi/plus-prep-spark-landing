@@ -14,6 +14,15 @@ const Index = () => {
   return (
     <ThemeProvider defaultTheme="light" storageKey="takeuforward-theme">
       <div className="min-h-screen bg-background text-foreground">
+        {/* Placeholder image at the top */}
+        <div className="w-full flex justify-center bg-muted/30 py-4">
+          <img
+            src="/placeholder.png"
+            alt="Main page placeholder"
+            className="max-w-full h-auto rounded-xl shadow-md border border-border"
+            style={{ maxHeight: 400 }}
+          />
+        </div>
         <Navbar />
         <Hero />
         <Companies />
