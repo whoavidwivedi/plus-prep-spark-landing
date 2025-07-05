@@ -88,4 +88,8 @@ html, body {
   .hero-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, #f97316 100%);
   }
+  
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
 }

@@ -10,6 +10,7 @@ import Reviews from "@/components/Reviews";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ThreeDMarqueeDemo from "@/components/3d-marquee-demo";
 import { ArrowUp } from "lucide-react";
 
 function ThemeTransitionLayer() {
@@ -82,6 +83,7 @@ const Index = () => {
       >
         <Navbar />
         <Hero />
+        <ThreeDMarqueeDemo />
         <Companies />
         <Features />
         <Syllabus />
