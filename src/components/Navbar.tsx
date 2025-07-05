@@ -18,12 +18,14 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <a href="/" className="block focus:outline-none" aria-label="Home">
-                <img
-                  src="/tuflogo.jpeg"
-                  alt="TUF Logo"
-                  className="h-10 w-auto object-contain drop-shadow-md"
-                  style={{ maxWidth: 140 }}
-                />
+                <span className="inline-flex items-center justify-center bg-black dark:bg-background rounded-lg p-1 transition-colors duration-300">
+                  <img
+                    src="/tuflogo.jpeg"
+                    alt="TUF Logo"
+                    className="h-10 w-auto object-contain drop-shadow-md"
+                    style={{ maxWidth: 140 }}
+                  />
+                </span>
               </a>
             </div>
           </div>
