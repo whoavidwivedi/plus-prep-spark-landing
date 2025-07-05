@@ -2,40 +2,43 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X, Code, Target, Users, Star } from "lucide-react";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navItems = [{
-    name: "Features",
-    href: "#features",
-    icon: Code
-  }, {
-    name: "Syllabus",
-    href: "#syllabus",
-    icon: Target
-  }, {
-    name: "Reviews",
-    href: "#reviews",
-    icon: Star
-  }, {
-    name: "Pricing",
-    href: "#pricing",
-    icon: Users
-  }];
-  return <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+  const navItems = [
+    { name: "Features", href: "#features", icon: Code },
+    { name: "Syllabus", href: "#syllabus", icon: Target },
+    { name: "Reviews", href: "#reviews", icon: Star },
+    { name: "Pricing", href: "#pricing", icon: Users },
+  ];
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="text-2xl font-bold gradient-text">TakeUForward</span>
-              <span className="ml-2 text-sm bg-primary text-primary-foreground px-2 py-1 rounded-full">PLUS</span>
+              <a href="/" className="block focus:outline-none" aria-label="Home">
+                <img
+                  src="/tuflogo.jpeg"
+                  alt="TUF Logo"
+                  className="h-10 w-auto object-contain drop-shadow-md"
+                  style={{ maxWidth: 140 }}
+                />
+              </a>
             </div>
           </div>
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map(item => <a key={item.name} href={item.href} className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              {navItems.map(item => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                >
                   {item.name}
-                </a>)}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -51,26 +54,41 @@ const Navbar = () => {
 
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
-            <button onClick={() => setIsOpen(!isOpen)} className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+            >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {isOpen && <div className="md:hidden">
+      {isOpen && (
+        <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-b border-border">
-            {navItems.map(item => <a key={item.name} href={item.href} className="text-muted-foreground hover:text-foreground block px-3 py-2 rounded-md text-base font-medium" onClick={() => setIsOpen(false)}>
+            {navItems.map(item => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-muted-foreground hover:text-foreground block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsOpen(false)}
+              >
                 {item.name}
-              </a>)}
+              </a>
+            ))}
             <div className="flex space-x-2 px-3 py-2">
               <Button variant="outline" size="sm" className="flex-1">
                 Login
               </Button>
-              <Button size="sm" className="flex-1 hero-gradient">Sign Up</Button>
+              <Button size="sm" className="flex-1 hero-gradient">
+                Sign Up
+              </Button>
             </div>
           </div>
-        </div>}
-    </nav>;
+        </div>
+      )}
+    </nav>
+  );
 };
 export default Navbar;
