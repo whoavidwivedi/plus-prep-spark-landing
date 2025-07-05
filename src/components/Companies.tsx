@@ -1,25 +1,60 @@
 import { Badge } from "@/components/ui/badge";
+import { LogoMarquee } from "@/components/ui/logo-marquee";
+
 const Companies = () => {
-  const companies = [{
-    name: "Google",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-  }, {
-    name: "Amazon",
-    logo: "data:image/png;base64,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"
-  }, {
-    name: "Microsoft",
-    logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAflBMVEX////yUCL/uQF/ugABpO///v////3+sgD//PrvQAAApe79//3+/vnl9/7/+eYAmu31gGbxUiLxTRv0+eRxsgAAnu8AoO2iyVpavPD9tQDvThT+rQD+//byLADyPwDxd2BorgDygmzvSwDzgmX1fWX4n46aw1Hu9/xKtO9avPOTFwh+AAACPklEQVR4nO3c3VITQRRF4VZzOp2clkASRoExoCA/7/+CdhLwyiqrsvuUo65V3DI1X6YnXG1SIiIiIiIiIiIiIiIiIiIiIiIi+o8zobdrZLFIXg+hTVdouVgtStVyTdnrWEsVakj7/e2eIixfFruF0u3hFGzutlJ3Nacgoe0upNZfU24PYLP9ILUdc4o5qVZ3F++Uru/bSbdRFtagd9GsLDTh+mH/PWq6sEb4+gkLQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoT/ktCmLEyp7NbXa6Fv58lTTfp2zYJWljbe3p8rPXxvByH75vGT1GMNGuf1yDx32A6GHdJ2ZZf2u4fhZz78nLwFTq/XiKndorRONTvem/QxhU65U3ZTbq26myqM5LWXyM2VtfrbXl3ZcbvnuNcw+Uexp+MpPRMLA5qtxJ6b0MvZzVzqpv099CDhMJMaXo7C+XupeahwKTQbPncSpkih9AwnL3T1lPYRXoUKp/AMESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoR/k3BQNjOzTsIaJ5wtFeHystPuKU5okq/bM5zXsGWXr1bDpdJLu8phnXd18jRv/5th27W0n7lqHReWo1QdY3T7PJm2dH4dSis74FbpgvllnrP0BOt0/1HAz3LusXQWH+If/QSIiIiIiIiIiIiIiIiIiIiIiGjS/QBrWFbO7fAd+gAAAABJRU5ErkJggg=="
-  }, {
-    name: "Apple",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
-  }, {
-    name: "Meta",
-    logo: "https://cdn.pixabay.com/photo/2021/12/14/22/29/meta-6871457_640.png"
-  }, {
-    name: "Netflix",
-    logo: "data:image/jpeg;base64,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"
-  }];
-  return <section className="py-16 px-4 bg-muted/20">
+  const companies = [
+    {
+      name: "Google",
+      logo: "/logos/google.png"
+    },
+    {
+      name: "Apple",
+      logo: "/logos/apple.png"
+    },
+    {
+      name: "Meta",
+      logo: "/logos/meta.png"
+    },
+    {
+      name: "Netflix",
+      logo: "/logos/netflix logo.png"
+    },
+    {
+      name: "Uber",
+      logo: "/logos/uber.png"
+    },
+    {
+      name: "Adobe",
+      logo: "/logos/adobe.png"
+    },
+    {
+      name: "NVIDIA",
+      logo: "/logos/nvidia.png"
+    },
+    {
+      name: "Spotify",
+      logo: "/logos/spotify.jpeg"
+    },
+    {
+      name: "Samsung",
+      logo: "/logos/samsung.jpeg"
+    },
+    {
+      name: "Mastercard",
+      logo: "/logos/mastercard.png"
+    },
+    {
+      name: "Morgan Stanley",
+      logo: "/logos/morgan stanley.jpeg"
+    },
+    {
+      name: "Goldman Sachs",
+      logo: "/logos/goldman sachs.jpeg"
+    }
+  ];
+
+  return (
+    <section className="py-16 px-4 bg-muted/20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 px-4 py-2">
@@ -33,17 +68,8 @@ const Companies = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-          {companies.map((company, index) => <div key={index} className="group text-center hover:scale-110 transition-transform duration-300" style={{
-          animationDelay: `${index * 0.1}s`
-        }}>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-border/50">
-                <img src={company.logo} alt={company.name} className="h-12 w-auto mx-auto mb-2 group-hover:scale-110 transition-transform duration-300 object-contain" />
-                <p className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                  {company.name}
-                </p>
-              </div>
-            </div>)}
+        <div className="mb-8">
+          <LogoMarquee companies={companies} speed={40} />
         </div>
 
         <div className="text-center mt-12">
@@ -52,6 +78,8 @@ const Companies = () => {
           </p>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Companies;
